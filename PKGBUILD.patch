@@ -1,0 +1,37 @@
+--- ../ungoogled-chromium/PKGBUILD	2021-01-07 16:58:00.693115461 -0800
++++ ./PKGBUILD	2021-01-07 16:57:40.972542157 -0800
+@@ -46,7 +46,9 @@
+         wayland-egl.patch
+         icu68.patch
+         v8-icu68.patch
+-        subpixel-anti-aliasing-in-FreeType-2.8.1.patch)
++        subpixel-anti-aliasing-in-FreeType-2.8.1.patch
++        https://raw.githubusercontent.com/qcasey/chromium-patches/main/patches/custom-startpage.patch
++        https://raw.githubusercontent.com/qcasey/chromium-patches/main/patches/gtk-dark-mode-switch-fix.patch)
+ sha256sums=('703e351ab82937cb455ad0b29b1101adc3fad7ddf77db017e7c75ff567a57f29'
+             $_uc_sum
+             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
+@@ -55,7 +57,9 @@
+             'bf86923eaee5529ab9fb6148bd6c33a73c8746ab1b4ade0cd3b761109bc55826'
+             '38fb5218331d6e03915490dab64f7b8bf26833a581d1aaa02090437c67e9439c'
+             '6e919c9712d8fe6c2918778df1f8c2ee0675a87a48be5d2aaa54e320703ced4b'
+-            '1e2913e21c491d546e05f9b4edf5a6c7a22d89ed0b36ef692ca6272bcd5faec6')
++            '1e2913e21c491d546e05f9b4edf5a6c7a22d89ed0b36ef692ca6272bcd5faec6'
++            'e270e67045755c5f61affe3b3b7420c9ac14b8c7e479333aa7b0819b4caab76c'
++            'dd7efb87e289c9a5d1cfb019692d5a12b9a2af0c970933453a2b6bbe1989417e')
+ 
+ # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
+ # Keys are the names in the above script; values are the dependencies in Arch
+@@ -96,6 +100,12 @@
+     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
+     third_party/libxml/chromium/*.cc
+ 
++  # Custom startpage with correct tab focus
++  patch -Np1 -i ../custom-startpage.patch
++
++  # Fix GTK Dark Mode theme switching (or brutally brute force it)
++  patch -Np1 -i ../gtk-dark-mode-switch-fix.patch
++
+   # Upstream fixes
+   patch -Np1 -i ../icu68.patch
+   patch -Np1 -d v8 <../v8-icu68.patch
