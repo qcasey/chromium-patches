@@ -1,0 +1,67 @@
+diff --git a/chrome/browser/ui/browser.cc b/chrome/browser/ui/browser.cc
+index 24954ee7e..8f1656740 100644
+--- a/chrome/browser/ui/browser.cc
++++ b/chrome/browser/ui/browser.cc
+@@ -668,7 +668,7 @@ bool Browser::HasFindBarController() const {
+ GURL Browser::GetNewTabURL() const {
+   if (app_controller_)
+     return app_controller_->GetAppStartUrl();
+-  return GURL(chrome::kChromeUINewTabURL);
++  return GURL("http://startpage.local");;
+ }
+ 
+ gfx::Image Browser::GetCurrentPageIcon() const {
+@@ -1811,6 +1811,9 @@ bool Browser::ShouldFocusLocationBarByDefault(WebContents* source) {
+     if (virtual_url.SchemeIs(content::kViewSourceScheme))
+       return false;
+ 
++    if (url == GURL(chrome::kChromeUINewTabURL))
++      return true;
++
+     if ((url.SchemeIs(content::kChromeUIScheme) &&
+          url.host_piece() == chrome::kChromeUINewTabHost) ||
+         (virtual_url.SchemeIs(content::kChromeUIScheme) &&
+diff --git a/chrome/browser/ui/focus_tab_after_navigation_helper.cc b/chrome/browser/ui/focus_tab_after_navigation_helper.cc
+index 9fc474936..2ddc3d6e0 100644
+--- a/chrome/browser/ui/focus_tab_after_navigation_helper.cc
++++ b/chrome/browser/ui/focus_tab_after_navigation_helper.cc
+@@ -37,6 +37,11 @@ void FocusTabAfterNavigationHelper::ReadyToCommitNavigation(
+ 
+ bool FocusTabAfterNavigationHelper::ShouldFocusTabContents(
+     content::NavigationHandle* navigation) {
++
++  // Custom startpage 
++  if (navigation->GetURL() == GURL(chrome::kChromeUINewTabURL))
++    return false;
++    
+   // Don't focus content in an inactive window or tab.
+   Browser* browser = chrome::FindBrowserWithWebContents(web_contents());
+   if (!browser)
+diff --git a/chrome/browser/ui/toolbar/chrome_location_bar_model_delegate.cc b/chrome/browser/ui/toolbar/chrome_location_bar_model_delegate.cc
+index d293bdf58..5a909b783 100644
+--- a/chrome/browser/ui/toolbar/chrome_location_bar_model_delegate.cc
++++ b/chrome/browser/ui/toolbar/chrome_location_bar_model_delegate.cc
+@@ -116,8 +116,8 @@ bool ChromeLocationBarModelDelegate::ShouldDisplayURL() const {
+   }
+ 
+   const auto is_ntp = [](const GURL& url) {
+-    return url.SchemeIs(content::kChromeUIScheme) &&
+-           url.host() == chrome::kChromeUINewTabHost;
++    return url == GURL(chrome::kChromeUINewTabURL) || (url.SchemeIs(content::kChromeUIScheme) &&
++           url.host() == chrome::kChromeUINewTabHost);
+   };
+ 
+   GURL url = entry->GetURL();
+diff --git a/chrome/common/webui_url_constants.cc b/chrome/common/webui_url_constants.cc
+index 1911569c8..aa6ec1af0 100644
+--- a/chrome/common/webui_url_constants.cc
++++ b/chrome/common/webui_url_constants.cc
+@@ -121,7 +121,7 @@ const char kChromeUINewTabHost[] = "newtab";
+ const char kChromeUINewTabIconHost[] = "ntpicon";
+ const char kChromeUINewTabPageHost[] = "new-tab-page";
+ const char kChromeUINewTabPageURL[] = "chrome://new-tab-page";
+-const char kChromeUINewTabURL[] = "chrome://newtab/";
++const char kChromeUINewTabURL[] = "http://startpage.local";
+ const char kChromeUIOmniboxHost[] = "omnibox";
+ const char kChromeUIOmniboxURL[] = "chrome://omnibox/";
+ const char kChromeUIPasswordManagerInternalsHost[] =
