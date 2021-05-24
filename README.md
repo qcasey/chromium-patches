@@ -29,7 +29,7 @@ I don't know enough about the monolithic structure to provide an actual contribu
 ### Chromium / Firefox Comparisons
 
 #### Before (web content theme not changed)
-![before](./before.gif)
+![before](https://github.com/qcasey/chromium-patches/raw/main/before.gif)
 
 #### After (theme changes, thank you Mr. Duck)
-![after](./after.gif)
+![after](https://github.com/qcasey/chromium-patches/raw/main/after.gif)
