@@ -13,7 +13,7 @@ PKGBUILD is of [ungoogled-chromium](https://aur.archlinux.org/packages/ungoogled
 
 **Solution:** Build Chromium with all instances of chrome://newtab replaced with your custom startpage URL. [This patch](https://github.com/qcasey/chromium-patches/blob/main/patches/custom-startpage.patch) does the replacement, and also adds some checks to ensure the URL is hidden and the searchbar keeps its focus. :smiley:
 
-![startpage.gif](./startpage.gif)
+![startpage.gif](https://github.com/qcasey/chromium-patches/blob/main/startpage.gif?raw=true)
 
 # GTK Dark Theme
 
