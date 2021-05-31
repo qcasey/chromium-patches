@@ -7,7 +7,7 @@ index 24954ee7e..8f1656740 100644
    if (app_controller_)
      return app_controller_->GetAppStartUrl();
 -  return GURL(chrome::kChromeUINewTabURL);
-+  return GURL("http://startpage.local");;
++  return GURL("file:///home/casey/Documents/Codes/Web/SimpleSalientStartpage/public/index.html");;
  }
  
  gfx::Image Browser::GetCurrentPageIcon() const {
@@ -56,12 +56,12 @@ diff --git a/chrome/common/webui_url_constants.cc b/chrome/common/webui_url_cons
 index 1911569c8..aa6ec1af0 100644
 --- a/chrome/common/webui_url_constants.cc
 +++ b/chrome/common/webui_url_constants.cc
-@@ -121,7 +121,7 @@ const char kChromeUINewTabHost[] = "newtab";
- const char kChromeUINewTabIconHost[] = "ntpicon";
- const char kChromeUINewTabPageHost[] = "new-tab-page";
- const char kChromeUINewTabPageURL[] = "chrome://new-tab-page";
+@@ -127,7 +127,7 @@ const char kChromeUINewTabPageURL[] = "chrome://new-tab-page/";
+ const char kChromeUINewTabPageThirdPartyHost[] = "new-tab-page-third-party";
+ const char kChromeUINewTabPageThirdPartyURL[] =
+     "chrome://new-tab-page-third-party/";
 -const char kChromeUINewTabURL[] = "chrome://newtab/";
-+const char kChromeUINewTabURL[] = "http://startpage.local";
++const char kChromeUINewTabURL[] = "file:///home/casey/Documents/Codes/Web/SimpleSalientStartpage/public/index.html";
  const char kChromeUIOmniboxHost[] = "omnibox";
  const char kChromeUIOmniboxURL[] = "chrome://omnibox/";
  const char kChromeUIPasswordManagerInternalsHost[] =
