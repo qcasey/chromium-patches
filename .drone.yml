@@ -1,0 +1,33 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: "makepkg"
+    image: archlinux:base-devel
+    commands:
+      - pacman -Syu --needed --noconfirm git patch
+      - useradd droneci -m
+      - chown droneci:droneci /drone/src
+      - passwd -d droneci
+      - printf 'droneci ALL=(ALL) ALL\n' | tee -a /etc/sudoers
+      - su - droneci
+      - git clone https://aur.archlinux.org/ungoogled-chromium.git
+      - cd ungoogled-chromium
+      - patch PKGBUILD < /drone/src/PKGBUILD.patch
+      - makepkg --syncdeps --noconfirm
+      - mv *.zst /drone/src
+
+  - name: upload
+    image: plugins/s3
+    settings:
+      bucket: ungoogled-chromium-builds
+      source: /drone/src/*.zst
+      target: ${DRONE_BUILD_NUMBER}
+      strip_prefix: /drone/src/
+      path_style: true
+      endpoint: https://s3.quinncasey.com:9000
+      access_key:
+        from_secret: minio_access_key
+      secret_key:
+        from_secret: minio_secret_key

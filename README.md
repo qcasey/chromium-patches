@@ -1,5 +1,7 @@
 # chromium-patches
 
+[![Build Status](https://drone.quinncasey.com/api/badges/qcasey/chromium-patches/status.svg)](https://drone.quinncasey.com/qcasey/chromium-patches)
+
 My custom [Chromium](https://source.chromium.org/chromium/chromium/src) patches, including:
 
 * Extension-less startpage that maintains its address bar focus.
