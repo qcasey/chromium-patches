@@ -1,22 +1,22 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 6b2b883..76e2c1e 100644
+index 298bea4..81d1b3f 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -34,7 +34,9 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
-         linux-sandbox-fix-fstatat-crash.patch
-         sql-make-VirtualCursor-standard-layout-type.patch
-         chromium-freetype-2.11.patch
+@@ -37,7 +37,9 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
+         chromium-93-ffmpeg-4.4.patch
+         chromium-94-ffmpeg-roll.patch
+         unexpire-accelerated-video-decode-flag.patch
 -        use-oauth2-client-switches-as-default.patch)
 +        use-oauth2-client-switches-as-default.patch
 +        https://raw.githubusercontent.com/qcasey/chromium-patches/main/patches/custom-startpage.patch
 +        https://raw.githubusercontent.com/qcasey/chromium-patches/main/patches/gtk-dark-mode-switch-fix.patch)
- sha256sums=('b6ac840ed5390de69f962e922649bf1df895ff0f5db8e5f656b5191e0cf4ce3a'
+ sha256sums=('7071aa2b2caf48094c2ae816395948b4daec940606f4982ad5bbf68e5d2de598'
              '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-             '53a2cbb1b58d652d5424ff9040b6a51b9dc6348ce3edc68344cd0d25f1f4beb2'
-@@ -43,7 +45,9 @@ sha256sums=('b6ac840ed5390de69f962e922649bf1df895ff0f5db8e5f656b5191e0cf4ce3a'
-             '253348550d54b8ae317fd250f772f506d2bae49fb5dc75fe15d872ea3d0e04a5'
-             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150'
-             '7ef689cd6b2f85f2b76b2a10ecede003cfa0c2da15acc998ecbc445f2c95ced6'
+             '22692bddaf2761c6ddf9ff0bc4722972bca4d4c5b2fd3e5dbdac7eb60d914320'
+@@ -49,7 +51,9 @@ sha256sums=('7071aa2b2caf48094c2ae816395948b4daec940606f4982ad5bbf68e5d2de598'
+             '1a9e074f417f8ffd78bcd6874d8e2e74a239905bf662f76a7755fa40dc476b57'
+             '56acb6e743d2ab1ed9f3eb01700ade02521769978d03ac43226dec94659b3ace'
+             '2a97b26c3d6821b15ef4ef1369905c6fa3e9c8da4877eb9af4361452a425290b'
 -            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 +            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
 +            'c41c65753def6800f8438feda5ffb04b25f4405ad2ec43e322221660f2231046'
@@ -24,7 +24,7 @@ index 6b2b883..76e2c1e 100644
  provides=('chromium')
  conflicts=('chromium')
  source=(${source[@]}
-@@ -94,6 +98,12 @@ prepare() {
+@@ -100,6 +104,12 @@ prepare() {
      third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
      third_party/libxml/chromium/*.cc
  
@@ -33,8 +33,7 @@ index 6b2b883..76e2c1e 100644
 +
 +  # Fix GTK Dark Mode theme switching (or brutally brute force it)
 +  patch -Np1 -i ../gtk-dark-mode-switch-fix.patch
-+  
++
    # Use the --oauth2-client-id= and --oauth2-client-secret= switches for
    # setting GOOGLE_DEFAULT_CLIENT_ID and GOOGLE_DEFAULT_CLIENT_SECRET at
    # runtime -- this allows signing into Chromium without baked-in values
-
