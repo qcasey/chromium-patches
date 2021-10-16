@@ -26,7 +26,7 @@ steps:
       target: ${DRONE_BUILD_NUMBER}
       strip_prefix: /drone/src/
       path_style: true
-      endpoint: https://s3.quinncasey.com:9000
+      endpoint: https://bucket.quinncasey.com
       access_key:
         from_secret: minio_access_key
       secret_key:
