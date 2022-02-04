@@ -6,7 +6,7 @@ steps:
   - name: "makepkg"
     image: archlinux:base-devel
     commands:
-      - /drone/src/build.sh
+      - /drone/src/drone/build.sh
 
   - name: upload
     image: plugins/s3
