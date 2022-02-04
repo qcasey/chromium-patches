@@ -1,22 +1,22 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index bc14481..c374211 100644
+index bd5c7b8..7870260 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -34,7 +34,9 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
+@@ -36,7 +36,9 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
+         sql-make-VirtualCursor-standard-layout-type.patch
          chromium-93-ffmpeg-4.4.patch
-         chromium-94-ffmpeg-roll.patch
-         unexpire-accelerated-video-decode-flag.patch
+         unbundle-ffmpeg-av_stream_get_first_dts.patch
 -        use-oauth2-client-switches-as-default.patch)
 +        use-oauth2-client-switches-as-default.patch
 +        https://raw.githubusercontent.com/qcasey/chromium-patches/main/patches/custom-startpage.patch
 +        https://raw.githubusercontent.com/qcasey/chromium-patches/main/patches/gtk-dark-mode-switch-fix.patch)
- sha256sums=('488c6ad983ebf7781cb4d704f70496e8aa2165611b46656d7aa62f269c760407'
+ sha256sums=('c87266e20f860a32c48affc70a769368d1b876dbad768e3aa93ee3c335944171'
              '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-             '090af7eab39aade15a1786273f2497d6b4abfaef24279fbf97ce0dd1c38c69aa'
-@@ -43,7 +45,9 @@ sha256sums=('488c6ad983ebf7781cb4d704f70496e8aa2165611b46656d7aa62f269c760407'
+             'f561145514e9d30a696a82f6a6a4eca06e664b58d7cda30dad9afb2cef341a4d'
+@@ -46,7 +48,9 @@ sha256sums=('c87266e20f860a32c48affc70a769368d1b876dbad768e3aa93ee3c335944171'
+             'b94b2e88f63cfb7087486508b8139599c89f96d7a4181c61fec4b4e250ca327a'
              '1a9e074f417f8ffd78bcd6874d8e2e74a239905bf662f76a7755fa40dc476b57'
-             '56acb6e743d2ab1ed9f3eb01700ade02521769978d03ac43226dec94659b3ace'
-             '2a97b26c3d6821b15ef4ef1369905c6fa3e9c8da4877eb9af4361452a425290b'
+             '1f0c1a7a1eb67d91765c9f28df815f58e1c6dc7b37d0acd4d68cac8e5515786c'
 -            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 +            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
 +            'c41c65753def6800f8438feda5ffb04b25f4405ad2ec43e322221660f2231046'
@@ -24,9 +24,9 @@ index bc14481..c374211 100644
  provides=('chromium')
  conflicts=('chromium')
  source=(${source[@]}
-@@ -94,6 +98,12 @@ prepare() {
-     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
-     third_party/libxml/chromium/*.cc
+@@ -98,6 +102,12 @@ prepare() {
+     third_party/libxml/chromium/*.cc \
+     third_party/maldoca/src/maldoca/ole/oss_utils.h
  
 +  # Custom startpage with correct tab focus
 +  patch -Np1 -i ../custom-startpage.patch
