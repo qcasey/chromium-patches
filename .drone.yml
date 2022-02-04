@@ -6,6 +6,8 @@ steps:
   - name: "makepkg"
     image: archlinux:base-devel
     commands:
+      - pacman-key --init
+      - pacman-key --populate archlinux
       - pacman -Sy archlinux-keyring
       - pacman -Syu --needed --noconfirm git patch
       - useradd droneci -m
