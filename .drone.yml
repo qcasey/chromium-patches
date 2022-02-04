@@ -8,7 +8,7 @@ steps:
     commands:
       - pacman-key --init
       - pacman-key --populate archlinux
-      - pacman -Syu --needed --noconfirm git patch
+      - pacman -Sy && pacman -S --needed --noconfirm git patch
       - useradd droneci -m
       - chown droneci:droneci /drone/src
       - passwd -d droneci
