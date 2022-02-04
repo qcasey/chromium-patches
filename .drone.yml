@@ -6,6 +6,7 @@ steps:
   - name: "makepkg"
     image: archlinux:base-devel
     commands:
+      - pacman -Sy archlinux-keyring
       - pacman -Syu --needed --noconfirm git patch
       - useradd droneci -m
       - chown droneci:droneci /drone/src
