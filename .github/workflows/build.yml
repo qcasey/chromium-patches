@@ -30,8 +30,8 @@ jobs:
          cd ungoogled-chromium
          ls ..
          pwd
-         ls
-         patch PKGBUILD < ../PKGBUILD.patch
+         ls -lah
+         patch ./PKGBUILD < ../PKGBUILD.patch
          su - droneci -c "makepkg --syncdeps --noconfirm"
       - uses: actions/upload-artifact@v2
         with:
