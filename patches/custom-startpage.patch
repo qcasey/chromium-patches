@@ -7,7 +7,7 @@ index 24954ee7e..8f1656740 100644
    if (app_controller_)
      return app_controller_->GetAppStartUrl();
 -  return GURL(chrome::kChromeUINewTabURL);
-+  return GURL("file:///home/casey/Documents/Codes/Web/SimpleSalientStartpage/public/index.html");;
++  return GURL("file:///var/lib/chromium-startpage/index.html");;
  }
  
  gfx::Image Browser::GetCurrentPageIcon() const {
@@ -61,7 +61,7 @@ index 1911569c8..aa6ec1af0 100644
  const char kChromeUINewTabPageThirdPartyURL[] =
      "chrome://new-tab-page-third-party/";
 -const char kChromeUINewTabURL[] = "chrome://newtab/";
-+const char kChromeUINewTabURL[] = "file:///home/casey/Documents/Codes/Web/SimpleSalientStartpage/public/index.html";
++const char kChromeUINewTabURL[] = "file:///var/lib/chromium-startpage/index.html";
  const char kChromeUIOmniboxHost[] = "omnibox";
  const char kChromeUIOmniboxURL[] = "chrome://omnibox/";
  const char kChromeUIPasswordManagerInternalsHost[] =

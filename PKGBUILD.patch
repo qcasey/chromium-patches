@@ -19,7 +19,7 @@ index bd5c7b8..7870260 100644
              '1f0c1a7a1eb67d91765c9f28df815f58e1c6dc7b37d0acd4d68cac8e5515786c'
 -            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 +            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
-+            'c41c65753def6800f8438feda5ffb04b25f4405ad2ec43e322221660f2231046'
++            '11f4222cf889edb01ae6eabd5da7362dccfed38ce0f59c12a58cf152f35ea6bb'
 +            'bed68de954f6a0174db3e1caf2e3ae173384984de4808672f8eecf0196103031')
  provides=('chromium')
  conflicts=('chromium')
