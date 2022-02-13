@@ -27,8 +27,8 @@ jobs:
          chown -R droneci:droneci ./
          su - droneci -c "git clone https://github.com/qcasey/chromium-patches.git"
          su - droneci -c "git clone https://aur.archlinux.org/ungoogled-chromium.git"
-         su - droneci -c "ls .. && pwd && ls && cd ungoogled-chromium && ls && patch ./PKGBUILD < ../chromium-patches/PKGBUILD.patch"
-         su - droneci -c "makepkg --syncdeps --noconfirm"
+         su - droneci -c "cd ungoogled-chromium && patch ./PKGBUILD < ../chromium-patches/PKGBUILD.patch"
+         su - droneci -c "cd ungoogled-chromium && makepkg --syncdeps --noconfirm"
       - uses: actions/upload-artifact@v2
         with:
           name: chromium-arch-linux
