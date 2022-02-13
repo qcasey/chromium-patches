@@ -29,6 +29,8 @@ jobs:
          git clone https://aur.archlinux.org/ungoogled-chromium.git
          cd ungoogled-chromium
          ls ..
+         pwd
+         ls
          patch PKGBUILD < ../PKGBUILD.patch
          su - droneci -c "makepkg --syncdeps --noconfirm"
       - uses: actions/upload-artifact@v2
