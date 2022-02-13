@@ -17,6 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     container: archlinux:base-devel
     steps:
+      - uses: actions/checkout@v2.4.0
       - run: |
          pacman-key --init
          pacman-key --populate archlinux
@@ -27,6 +28,7 @@ jobs:
          su - droneci
          git clone https://aur.archlinux.org/ungoogled-chromium.git
          cd ungoogled-chromium
+         ls ..
          patch PKGBUILD < ../PKGBUILD.patch
          makepkg --syncdeps --noconfirm
       - uses: actions/upload-artifact@v2
