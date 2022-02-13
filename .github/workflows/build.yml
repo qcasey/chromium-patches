@@ -33,4 +33,4 @@ jobs:
         with:
           name: chromium-arch-linux
           path: |
-            *.zst
+            /home/droneci/ungoogled-chromium/*.zst
