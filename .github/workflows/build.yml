@@ -17,7 +17,6 @@ jobs:
     runs-on: self-hosted
     container: archlinux:base-devel
     steps:
-      - uses: actions/checkout@v2.4.0
       - run: |
          pacman-key --init
          pacman-key --populate archlinux
@@ -26,8 +25,9 @@ jobs:
          passwd -d droneci
          printf 'droneci ALL=(ALL) ALL\n' | tee -a /etc/sudoers
          chown -R droneci:droneci ./
+         su - droneci -c "git clone https://github.com/qcasey/chromium-patches.git"
          su - droneci -c "git clone https://aur.archlinux.org/ungoogled-chromium.git"
-         su - droneci -c "pwd && ls && cd ungoogled-chromium && ls && patch ./PKGBUILD < ../PKGBUILD.patch"
+         su - droneci -c "ls .. && pwd && ls && cd ungoogled-chromium && ls && patch ./PKGBUILD < ../chromium-patches/PKGBUILD.patch"
          su - droneci -c "makepkg --syncdeps --noconfirm"
       - uses: actions/upload-artifact@v2
         with:
