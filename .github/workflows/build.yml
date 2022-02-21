@@ -17,7 +17,8 @@ jobs:
     runs-on: self-hosted
     container: archlinux:base-devel
     steps:
-      - run: |
+      - name: Build
+        run: |
          pacman-key --init
          pacman-key --populate archlinux
          pacman -Sy archlinux-keyring --needed --noconfirm && pacman -Syyu --needed --noconfirm && pacman -S --needed --noconfirm git patch
