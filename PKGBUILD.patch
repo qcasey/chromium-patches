@@ -1,5 +1,5 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index ea6a4b3..d98bfac 100644
+index ea6a4b3..e10a501 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
 @@ -35,7 +35,9 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
@@ -13,18 +13,18 @@ index ea6a4b3..d98bfac 100644
  sha256sums=('97c52e57eca0dc8b752d274047f38c88aaa86036c0587b26b056efbd3fb2bae3'
              '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
              '9cd2570e92e9bfeff3faf0d5b56334535cb2313f99ab0d9019b74d18ae1c7d0a'
-@@ -43,8 +45,8 @@ sha256sums=('97c52e57eca0dc8b752d274047f38c88aaa86036c0587b26b056efbd3fb2bae3'
-             'f910be9370c880de6e1d61cc30383c069e421d7acf406166e4fbfad324fc7d61'
+@@ -44,7 +46,9 @@ sha256sums=('97c52e57eca0dc8b752d274047f38c88aaa86036c0587b26b056efbd3fb2bae3'
              '064daaa2b9d95b96ec04d8ddebf4af441f92263d123365b58fe73966866080af'
              '34bcb151c0bc51ada5aa7beda6e87356e0eaafa83a621e11e5803717adc39ffc'
--            'b94b2e88f63cfb7087486508b8139599c89f96d7a4181c61fec4b4e250ca327a'
+             'b94b2e88f63cfb7087486508b8139599c89f96d7a4181c61fec4b4e250ca327a'
 -            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
++            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
 +            '11f4222cf889edb01ae6eabd5da7362dccfed38ce0f59c12a58cf152f35ea6bb'
 +            'bed68de954f6a0174db3e1caf2e3ae173384984de4808672f8eecf0196103031')
  provides=('chromium')
  conflicts=('chromium')
  source=(${source[@]}
-@@ -96,6 +98,12 @@ prepare() {
+@@ -96,6 +100,12 @@ prepare() {
      third_party/libxml/chromium/*.cc \
      third_party/maldoca/src/maldoca/ole/oss_utils.h
  
