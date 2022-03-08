@@ -33,7 +33,7 @@ jobs:
 
   publish-release:
     runs-on: ubuntu-latest
-    needs: build-release
+    needs: build
     if: contains(github.ref, 'refs/tags/')
     steps:
       - name: Get version
