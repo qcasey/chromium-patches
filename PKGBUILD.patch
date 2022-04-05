@@ -1,21 +1,20 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index ea6a4b3..e10a501 100644
+index 73d56d8..531cc0f 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -35,7 +35,9 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
+@@ -33,14 +33,18 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
          webcodecs-stop-using-AudioOpusEncoder.patch
-         use-FT_Done_MM_Var-in-CFX_Font-AdjustMMParams.patch
+         webrtc-check-existence-of-cursor-metadata.patch
          sql-make-VirtualCursor-standard-layout-type.patch
 -        use-oauth2-client-switches-as-default.patch)
 +        use-oauth2-client-switches-as-default.patch
 +        https://raw.githubusercontent.com/qcasey/chromium-patches/main/patches/custom-startpage.patch
 +        https://raw.githubusercontent.com/qcasey/chromium-patches/main/patches/gtk-dark-mode-switch-fix.patch)
- sha256sums=('97c52e57eca0dc8b752d274047f38c88aaa86036c0587b26b056efbd3fb2bae3'
+ sha256sums=('0e5ea5f3061ad090cf6bd57ca037496d95ea8956de021aff902f7d0ded7bffdc'
              '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-             '9cd2570e92e9bfeff3faf0d5b56334535cb2313f99ab0d9019b74d18ae1c7d0a'
-@@ -44,7 +46,9 @@ sha256sums=('97c52e57eca0dc8b752d274047f38c88aaa86036c0587b26b056efbd3fb2bae3'
+             'a6120e7d4eb5e131b87b6ab3b922e0c6cd78e15501e54cfb2019875173688d80'
              '064daaa2b9d95b96ec04d8ddebf4af441f92263d123365b58fe73966866080af'
-             '34bcb151c0bc51ada5aa7beda6e87356e0eaafa83a621e11e5803717adc39ffc'
+             '88b2c8d9c6c1917f6632453f18aad7a3fd94d605eecb6c77ae2394ac5856ba95'
              'b94b2e88f63cfb7087486508b8139599c89f96d7a4181c61fec4b4e250ca327a'
 -            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 +            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
@@ -24,7 +23,7 @@ index ea6a4b3..e10a501 100644
  provides=('chromium')
  conflicts=('chromium')
  source=(${source[@]}
-@@ -96,6 +100,12 @@ prepare() {
+@@ -92,6 +96,12 @@ prepare() {
      third_party/libxml/chromium/*.cc \
      third_party/maldoca/src/maldoca/ole/oss_utils.h
  
