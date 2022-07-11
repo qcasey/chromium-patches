@@ -26,9 +26,9 @@ PKGBUILD is of [ungoogled-chromium](https://aur.archlinux.org/packages/ungoogled
 
 ## Gnome 42 Note
 
-This patch correctly handles dark/light theme switching on Gnome's **theme variants**. As of Gnome 42 this is now a legacy feature.
+This patch correctly handles dark/light theme switching on GTK's **theme variants**. As of Gnome 42 this is now a legacy feature.
 
-This patch does not work with **only** Gnome 42's "Dark Style Preference". **You must switch themes**, not style preference. Firefox handles this new feature correctly, would appreciate help implementing it here.
+This patch does not work Gnome 42's "Dark Style Preference". **You must switch themes**, not style preference. Firefox handles this new feature correctly, would appreciate help implementing it here.
 
 At the time of writing, the "legacy" feature is still a valid way to switch between light and dark desktop themes. I switch Adawita/Adawita Dark [with this extension](https://nightthemeswitcher.romainvigier.fr/) for example.
 
