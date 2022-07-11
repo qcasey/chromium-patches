@@ -1,31 +1,32 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 73d56d8..531cc0f 100644
+index 7eaa0cc..a675dcf 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -33,14 +33,18 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
-         webcodecs-stop-using-AudioOpusEncoder.patch
-         webrtc-check-existence-of-cursor-metadata.patch
+@@ -34,7 +34,9 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
+         roll-src-third_party-ffmpeg.patch
          sql-make-VirtualCursor-standard-layout-type.patch
+         remove-no-opaque-pointers-flag.patch
 -        use-oauth2-client-switches-as-default.patch)
 +        use-oauth2-client-switches-as-default.patch
 +        https://raw.githubusercontent.com/qcasey/chromium-patches/main/patches/custom-startpage.patch
 +        https://raw.githubusercontent.com/qcasey/chromium-patches/main/patches/gtk-dark-mode-switch-fix.patch)
- sha256sums=('0e5ea5f3061ad090cf6bd57ca037496d95ea8956de021aff902f7d0ded7bffdc'
+ sha256sums=('77683510f03b947332461b03954488474d95e49992efc11908f4bd8045635965'
              '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-             'a6120e7d4eb5e131b87b6ab3b922e0c6cd78e15501e54cfb2019875173688d80'
-             '064daaa2b9d95b96ec04d8ddebf4af441f92263d123365b58fe73966866080af'
-             '88b2c8d9c6c1917f6632453f18aad7a3fd94d605eecb6c77ae2394ac5856ba95'
+             'fed11a8987d9f9baa04457fb114f8f7fdb800300a3780927020865bcc43e4f52'
+@@ -42,7 +44,9 @@ sha256sums=('77683510f03b947332461b03954488474d95e49992efc11908f4bd8045635965'
+             '30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44'
              'b94b2e88f63cfb7087486508b8139599c89f96d7a4181c61fec4b4e250ca327a'
+             '00c16ce83ea4ca924a50fa0cfc2b2a4d744c722f363b065323e6ba0fcbac45a5'
 -            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 +            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
-+            '11f4222cf889edb01ae6eabd5da7362dccfed38ce0f59c12a58cf152f35ea6bb'
-+            'bed68de954f6a0174db3e1caf2e3ae173384984de4808672f8eecf0196103031')
++            'aec79dad81001efc20c83888993d2cfc081548dd85dc14905148b3efb0fdc4e8'
++            '07134c33e3947b8ef6f070f732d79e7998db2d3271b5f29bb28ce06748a5ad79')
  provides=('chromium')
  conflicts=('chromium')
- source=(${source[@]}
-@@ -92,6 +96,12 @@ prepare() {
-     third_party/libxml/chromium/*.cc \
-     third_party/maldoca/src/maldoca/ole/oss_utils.h
+ _uc_usr=ungoogled-software
+@@ -130,6 +134,12 @@ prepare() {
+   python "$_utils/domain_substitution.py" apply -r "$_ungoogled_repo/domain_regex.list" \
+     -f "$_ungoogled_repo/domain_substitution.list" -c domainsubcache.tar.gz ./
  
 +  # Custom startpage with correct tab focus
 +  patch -Np1 -i ../custom-startpage.patch
@@ -33,6 +34,6 @@ index 73d56d8..531cc0f 100644
 +  # Fix GTK Dark Mode theme switching (or brutally brute force it)
 +  patch -Np1 -i ../gtk-dark-mode-switch-fix.patch
 +
-   # Use the --oauth2-client-id= and --oauth2-client-secret= switches for
-   # setting GOOGLE_DEFAULT_CLIENT_ID and GOOGLE_DEFAULT_CLIENT_SECRET at
-   # runtime -- this allows signing into Chromium without baked-in values
+   # Link to system tools required by the build
+   mkdir -p third_party/node/linux/node-linux-x64/bin
+   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
