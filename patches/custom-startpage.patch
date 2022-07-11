@@ -53,15 +53,15 @@ index d293bdf58..5a909b783 100644
  
    GURL url = entry->GetURL();
 diff --git a/chrome/common/webui_url_constants.cc b/chrome/common/webui_url_constants.cc
-index 1911569c8..aa6ec1af0 100644
+index eece713..67f6e55 100644
 --- a/chrome/common/webui_url_constants.cc
 +++ b/chrome/common/webui_url_constants.cc
-@@ -127,7 +127,7 @@ const char kChromeUINewTabPageURL[] = "chrome://new-tab-page/";
+@@ -144,7 +144,7 @@ const char kChromeUINewTabPageURL[] = "chrome://new-tab-page/";
  const char kChromeUINewTabPageThirdPartyHost[] = "new-tab-page-third-party";
  const char kChromeUINewTabPageThirdPartyURL[] =
      "chrome://new-tab-page-third-party/";
 -const char kChromeUINewTabURL[] = "chrome://newtab/";
 +const char kChromeUINewTabURL[] = "file:///var/lib/chromium-startpage/index.html";
+ const char kChromeUIProfileInternalsHost[] = "profile-internals";
  const char kChromeUIOmniboxHost[] = "omnibox";
  const char kChromeUIOmniboxURL[] = "chrome://omnibox/";
- const char kChromeUIPasswordManagerInternalsHost[] =
