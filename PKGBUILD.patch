@@ -1,22 +1,22 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 7eaa0cc..a675dcf 100644
+index 8cec693..626b4f7 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -34,7 +34,9 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
+@@ -35,7 +35,9 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
          roll-src-third_party-ffmpeg.patch
-         sql-make-VirtualCursor-standard-layout-type.patch
+         chromium-tflite-system-zlib.patch
          remove-no-opaque-pointers-flag.patch
 -        use-oauth2-client-switches-as-default.patch)
 +        use-oauth2-client-switches-as-default.patch
 +        https://raw.githubusercontent.com/qcasey/chromium-patches/main/patches/custom-startpage.patch
 +        https://raw.githubusercontent.com/qcasey/chromium-patches/main/patches/gtk-dark-mode-switch-fix.patch)
- sha256sums=('77683510f03b947332461b03954488474d95e49992efc11908f4bd8045635965'
+ sha256sums=('9cc662f1a84c796521ee17ed2808795ca937fe7f77bc605e788f0304a81dabf3'
              '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-             'fed11a8987d9f9baa04457fb114f8f7fdb800300a3780927020865bcc43e4f52'
-@@ -42,7 +44,9 @@ sha256sums=('77683510f03b947332461b03954488474d95e49992efc11908f4bd8045635965'
+             'ce702099849465927cf47f7bc3a4a27045d0e35e16b17481ebf35e14506bafa7'
+@@ -44,7 +46,9 @@ sha256sums=('9cc662f1a84c796521ee17ed2808795ca937fe7f77bc605e788f0304a81dabf3'
              '30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44'
-             'b94b2e88f63cfb7087486508b8139599c89f96d7a4181c61fec4b4e250ca327a'
-             '00c16ce83ea4ca924a50fa0cfc2b2a4d744c722f363b065323e6ba0fcbac45a5'
+             '588c166bf748793758a7df438cfa665b32e09ca8fbd6380be28bc5984a33523c'
+             'ab46b2c26a4dfe86486fd7e31bfc7211c515994a61a8c0cbd742f9c9e3c91873'
 -            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 +            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
 +            'aec79dad81001efc20c83888993d2cfc081548dd85dc14905148b3efb0fdc4e8'
@@ -24,7 +24,7 @@ index 7eaa0cc..a675dcf 100644
  provides=('chromium')
  conflicts=('chromium')
  _uc_usr=ungoogled-software
-@@ -130,6 +134,12 @@ prepare() {
+@@ -134,6 +138,12 @@ prepare() {
    python "$_utils/domain_substitution.py" apply -r "$_ungoogled_repo/domain_regex.list" \
      -f "$_ungoogled_repo/domain_substitution.list" -c domainsubcache.tar.gz ./
  
