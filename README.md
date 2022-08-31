@@ -32,7 +32,9 @@ This patch does not work Gnome 42's "Dark Style Preference". **You must switch t
 
 At the time of writing, the "legacy" feature is still a valid way to switch between light and dark desktop themes. I switch Adawita/Adawita Dark [with this extension](https://nightthemeswitcher.romainvigier.fr/) for example.
 
-### Chromium / Firefox Comparisons
+## Chromium / Firefox Comparisons
+
+As of August 2022 this still works.
 
 #### Before (web content theme not changed)
 ![before](https://github.com/qcasey/chromium-patches/raw/main/before.gif)
