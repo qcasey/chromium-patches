@@ -2,15 +2,6 @@ diff --git a/chrome/browser/ui/browser.cc b/chrome/browser/ui/browser.cc
 index 24954ee7e..8f1656740 100644
 --- a/chrome/browser/ui/browser.cc
 +++ b/chrome/browser/ui/browser.cc
-@@ -668,7 +668,7 @@ bool Browser::HasFindBarController() const {
- GURL Browser::GetNewTabURL() const {
-   if (app_controller_)
-     return app_controller_->GetAppStartUrl();
--  return GURL(chrome::kChromeUINewTabURL);
-+  return GURL("file:///var/lib/chromium-startpage/index.html");;
- }
- 
- gfx::Image Browser::GetCurrentPageIcon() const {
 @@ -1811,6 +1811,9 @@ bool Browser::ShouldFocusLocationBarByDefault(WebContents* source) {
      if (virtual_url.SchemeIs(content::kViewSourceScheme))
        return false;
