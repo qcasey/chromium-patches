@@ -17,25 +17,29 @@ PKGBUILD is of [ungoogled-chromium](https://aur.archlinux.org/packages/ungoogled
 
 # GTK Dark Theme
 
-**Problem:** Chrome does not respect GTK themes when it sets `prefers-color-scheme`. It's a somewhat long-lived bug in Chromium on Linux. Here is the bugreport and Electron issue:
+*As of August 2022 this still works.*
+
+**Problem:** Chromium does not update `prefers-color-scheme` when the GTK OS theme is changed. It's a long-lived bug in Chromium. Here is the bugreport and Electron issue:
 
 * https://bugs.chromium.org/p/chromium/issues/detail?id=998903
 * https://github.com/electron/electron/issues/21427
 
-**Solution-(ish):** Use [this patch](https://github.com/qcasey/chromium-patches/blob/main/patches/gtk-dark-mode-switch-fix.patch) to add a very naive forced update to the Web and NativeUI themes. This most likely should be done with listeners like Chromium already uses for Windows and MacOS, but GTK seems deliberately left out.
+**Workaround:** [This minor patch](https://github.com/qcasey/chromium-patches/blob/main/patches/gtk-dark-mode-switch-fix.patch) calls an update on the internal Web and NativeUI colors when the OS theme is changed.
 
 ## Gnome 42 Note
 
 This patch correctly handles dark/light theme switching on GTK's **theme variants**. As of Gnome 42 this is now a legacy feature.
 
-This patch does not work Gnome 42's "Dark Style Preference". **You must switch themes**, not style preference. Firefox handles this new feature correctly, would appreciate help implementing it here.
+This patch *does not work* with Gnome 42's "Dark Style Preference". **You must switch themes**. Firefox handles this new feature correctly. I would appreciate help implementing it here.
 
 At the time of writing, the "legacy" feature is still a valid way to switch between light and dark desktop themes. I switch Adawita/Adawita Dark [with this extension](https://nightthemeswitcher.romainvigier.fr/) for example.
 
-### Chromium / Firefox Comparisons
+## Chromium / Firefox Comparisons
 
-#### Before (web content theme not changed)
+*As of August 2022 this still works.*
+
+#### Before patch
 ![before](https://github.com/qcasey/chromium-patches/raw/main/before.gif)
 
-#### After (theme changes, thank you Mr. Duck)
+#### After patch (theme changes, thank you Mr. Duck)
 ![after](https://github.com/qcasey/chromium-patches/raw/main/after.gif)
