@@ -1,8 +1,8 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index ca8a1ff..b0b0945 100644
+index 85a69d5..a9db4b4 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -35,7 +35,9 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
+@@ -36,7 +36,9 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
          REVERT-roll-src-third_party-ffmpeg-m102.patch
          REVERT-roll-src-third_party-ffmpeg-m106.patch
          angle-wayland-include-protocol.patch
@@ -10,10 +10,10 @@ index ca8a1ff..b0b0945 100644
 +        use-oauth2-client-switches-as-default.patch
 +        https://raw.githubusercontent.com/qcasey/chromium-patches/main/patches/custom-startpage.patch
 +        https://raw.githubusercontent.com/qcasey/chromium-patches/main/patches/gtk-dark-mode-switch-fix.patch)
- sha256sums=('0f091b4950e120d5c3e23ab391bacfdb6ce8eb8d0acab55e9dae1a8c247dd192'
+ sha256sums=('6c0e00c186e22a1be29177ea410ba40ff0bf65f3ded67a345eb5b17f76c93c59'
              '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-             '2ad419439379d17385b7fd99039aca875ba36ca31b591b9cd4ccef84273be121'
-@@ -44,7 +46,9 @@ sha256sums=('0f091b4950e120d5c3e23ab391bacfdb6ce8eb8d0acab55e9dae1a8c247dd192'
+             '2b26c16f8326803ef287fb443a17bc139a440673955c5a6a38e9368bcaeed7c4'
+@@ -46,7 +48,9 @@ sha256sums=('6c0e00c186e22a1be29177ea410ba40ff0bf65f3ded67a345eb5b17f76c93c59'
              '30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44'
              '4c12d31d020799d31355faa7d1fe2a5a807f7458e7f0c374adf55edb37032152'
              'cd0d9d2a1d6a522d47c3c0891dabe4ad72eabbebc0fe5642b9e22efa3d5ee572'
@@ -24,7 +24,7 @@ index ca8a1ff..b0b0945 100644
 
  provides=('chromium')
  conflicts=('chromium')
-@@ -149,6 +153,12 @@ prepare() {
+@@ -151,6 +155,12 @@ prepare() {
    python "$_utils/domain_substitution.py" apply -r "$_ungoogled_repo/domain_regex.list" \
      -f "$_ungoogled_repo/domain_substitution.list" -c domainsubcache.tar.gz ./
  
