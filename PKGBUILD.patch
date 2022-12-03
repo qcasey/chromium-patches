@@ -1,21 +1,21 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 85a69d5..a9db4b4 100644
+index 99e54f7..05d0fc8 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -36,7 +36,9 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
-         REVERT-roll-src-third_party-ffmpeg-m102.patch
+@@ -35,7 +35,9 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
          REVERT-roll-src-third_party-ffmpeg-m106.patch
+         disable-GlobalMediaControlsCastStartStop.patch
          angle-wayland-include-protocol.patch
 -        use-oauth2-client-switches-as-default.patch)
 +        use-oauth2-client-switches-as-default.patch
 +        https://raw.githubusercontent.com/qcasey/chromium-patches/main/patches/custom-startpage.patch
 +        https://raw.githubusercontent.com/qcasey/chromium-patches/main/patches/gtk-dark-mode-switch-fix.patch)
- sha256sums=('6c0e00c186e22a1be29177ea410ba40ff0bf65f3ded67a345eb5b17f76c93c59'
+ sha256sums=('cb6ca080c492ede34df7bf9c4eca45576e6306865985465bd0319c96bb71ff5d'
              '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-             '2b26c16f8326803ef287fb443a17bc139a440673955c5a6a38e9368bcaeed7c4'
-@@ -46,7 +48,9 @@ sha256sums=('6c0e00c186e22a1be29177ea410ba40ff0bf65f3ded67a345eb5b17f76c93c59'
-             '30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44'
+             '40ef8af65e78901bb8554eddbbb5ebc55c0b8e7927f6ca51b2a353d1c7c50652'
+@@ -44,7 +46,9 @@ sha256sums=('cb6ca080c492ede34df7bf9c4eca45576e6306865985465bd0319c96bb71ff5d'
              '4c12d31d020799d31355faa7d1fe2a5a807f7458e7f0c374adf55edb37032152'
+             '7f3b1b22d6a271431c1f9fc92b6eb49c6d80b8b3f868bdee07a6a1a16630a302'
              'cd0d9d2a1d6a522d47c3c0891dabe4ad72eabbebc0fe5642b9e22efa3d5ee572'
 -            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 +            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
@@ -24,7 +24,7 @@ index 85a69d5..a9db4b4 100644
 
  provides=('chromium')
  conflicts=('chromium')
-@@ -151,6 +155,12 @@ prepare() {
+@@ -148,6 +152,12 @@ prepare() {
    python "$_utils/domain_substitution.py" apply -r "$_ungoogled_repo/domain_regex.list" \
      -f "$_ungoogled_repo/domain_substitution.list" -c domainsubcache.tar.gz ./
  
